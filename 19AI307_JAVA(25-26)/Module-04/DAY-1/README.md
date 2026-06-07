@@ -1,16 +1,22 @@
-# Ex.No:3(F) WRAPPER CLASS
+# Ex.No:4(A) EXCEPTION HANDLING
 
 ## QUESTION:
-Write a Java program to convert a string to an integer using a wrapper class and perform addition.
+If an Integer object is set to null, and you attempt to call .toString() on it, what happens? How can you prevent your code from throwing an exception in such cases?
 
 ## AIM:
-To convert string inputs into integers using the wrapper class and perform addition.
+To write a Java program that demonstrates how a NullPointerException occurs when accessing methods on a null Integer object, and how to handle it using a try–catch block.
 
 ## ALGORITHM :
 1.	Start the program.
 2.	Import the necessary package 'java.util'
-3.	Add the two integers.
-4.	Display the sum.
+3.	Read an integer value input.
+4. If the input is 0, assign null to the Integer object num; otherwise assign the input value.
+5. Use a try block to call num.toString():
+   - If num is not null, print its string representation.
+   - If num is null, a NullPointerException will be thrown.
+6. Catch the NullPointerException and print "Null Integer".
+7. Close the scanner.
+8. End the program.	
 
 
 
@@ -19,8 +25,8 @@ To convert string inputs into integers using the wrapper class and perform addit
 ## PROGRAM:
  ```
 /*
-Program to implement a Wrapper Class using Java
-Developed by: Thanushree Vijayakanth
+Program to implement a Exception Handling using Java
+Developed by: Thanushree Vijaykanth
 RegisterNumber: 212224040166
 */
 ```
@@ -29,26 +35,20 @@ RegisterNumber: 212224040166
 ```java
 import java.util.Scanner;
 
-public class Main {
+public class NullPointerIntegerExample {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        String str1 = scanner.next();
-
-        String str2 = scanner.next();
-
-        scanner.close();
+        int input = sc.nextInt();
+        Integer num = (input == 0) ? null : input;
 
         try {
-            int num1 = Integer.parseInt(str1);
-            int num2 = Integer.parseInt(str2);
-
-
-            int sum = num1 + num2;
-            System.out.println("Sum = " + sum);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a valid number.");
+            System.out.println(num.toString());
+        } catch (NullPointerException e) {
+            System.out.println("Null Integer");
         }
+
+        sc.close();
     }
 }
 ```
@@ -59,10 +59,9 @@ public class Main {
 
 
 ## OUTPUT:
-
-<img width="1223" height="414" alt="image" src="https://github.com/user-attachments/assets/e11dbc1a-45c7-4d20-9895-e2a3432588c0" />
+<img width="577" height="285" alt="image" src="https://github.com/user-attachments/assets/e40915d0-0665-4dfe-aadc-f594b35d6d78" />
 
 
 
 ## RESULT:
-The program successfully converts strings to integers and displays their sum.
+The program successfully demonstrates how invoking a method on a null Integer object triggers a NullPointerException, and shows how the exception can be caught and handled gracefully by printing "Null Integer".
